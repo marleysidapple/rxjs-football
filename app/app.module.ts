@@ -7,7 +7,7 @@ import { AppRoutingModule } from "./app.routing";
 
 
 
-
+import { ExplodePipe } from './pipes/explode.pipe';
 
 import { AppComponent }  from './app.component';
 import { CompetitionComponent } from './competition/competition.component';
@@ -21,8 +21,8 @@ import { CompetitionService } from './services/competition.service';
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule, AppRoutingModule],
-  declarations: [ AppComponent, CompetitionComponent, HeaderComponent, HomeComponent],
-  providers: 	[CompetitionService],
+  declarations: [ AppComponent, CompetitionComponent, HeaderComponent, HomeComponent, ExplodePipe],
+  providers: 	[CompetitionService, ExplodePipe],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

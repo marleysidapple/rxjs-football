@@ -81,3 +81,12 @@ a.teamname{
 	font-weight: 600;
 	cursor: pointer;
 }
+
+.inprogress{
+	color: hsl(120, 100%, 25%);
+    font-weight: 700;
+}
+
+p.goals{
+	font-weight: bolder;
+}
