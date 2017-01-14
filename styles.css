@@ -63,6 +63,8 @@ ul.teamlisting{
 	list-style-type: none;
 	font-size: 13px;
 	line-height: 17px;
+	margin: 0;
+	padding: 0;
 }
 
 
@@ -86,6 +88,7 @@ a.teamname{
 	color: hsl(120, 100%, 25%);
     font-weight: 700;
 }
+
 
 p.goals{
 	font-weight: bolder;
