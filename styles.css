@@ -76,3 +76,8 @@ a.teamname{
 .restrict{
 	max-height: 40px;
 }
+
+.competingteams{
+	font-weight: 600;
+	cursor: pointer;
+}
