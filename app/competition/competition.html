@@ -1,0 +1,85 @@
+<div class="row">
+
+
+<div class="col-sm-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				 <h3 class="panel-title">Teams</h3>
+			</div>
+
+			<div class="panel-body team-holder">
+				<ul *ngFor="let team of competingTeams?.teams" class="teamlisting">
+					<li><a class="teamname" routerLink = "/team/details/"><img src="{{team?.crestUrl}}" style="max-width: 20px;">&nbsp;{{team?.name}}</a></li>
+					<hr/>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <h3 class="panel-title">Standings</h3>
+				</div>
+
+				<div class="panel-body">
+					<table class="table table-condensed table-hover">
+						
+						<tr>
+							<th>#</th>
+							<th>Team</th>
+							<th>P</th>
+							<th>W</th>
+							<th>D</th>
+							<th>L</th>
+							<th>Pts</th>
+						</tr>
+
+						<tr *ngFor="let pts of standing">
+							<td [ngClass] = "pts?.position <= 4 ? 'green' : pts?.position >= 18 ? 'red' : ''">{{pts?.position}}</td>
+							<td><img src="{{pts?.crestURI}}" style="max-width: 10px;">&nbsp;{{pts?.teamName}}</td>
+							<td>{{pts?.playedGames}}</td>
+							<td>{{pts?.wins}}</td>
+							<td>{{pts?.draws}}</td>
+							<td>{{pts?.losses}}</td>
+							<td>{{pts?.points}}</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Fixtures
+				</div>
+
+				<div class="panel-body team-holder">
+
+					<table class="table table-condensed table-hover">
+						<tbody *ngFor="let fix of allfixtures?.fixtures">
+							<tr>
+								<td>{{fix?.homeTeamName}}</td>
+								<td>Vs</td>
+								<td>{{fix?.awayTeamName}}</td>
+							</tr>
+
+							<tr>
+								<td colspan="3" style="border-top: none;">{{fix?.date | date:'medium'}}</td>
+							</tr>
+						</tbody>
+					</table>
+
+
+					
+				</div>
+			</div>
+		</div>
+	</div>
