@@ -11,6 +11,10 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 })
 
+@Pipe({
+	name: 'explode'
+})
+
 
 
 
@@ -29,6 +33,7 @@ export class CompetitionComponent {
 	ngOnInit(): void {
 		this._route.params.subscribe((params: Params) => {
 			this.detailsofSelectedCompetition(params['id']);
+			setInterval(() => this.detailsofSelectedCompetition(params['id']), 20000);
 		});
 	}
 
@@ -54,10 +59,10 @@ export class CompetitionComponent {
 	}
 
 
-	fullFixtureDetail(url: any){
-		//this.fixtureId = this._pipe.transform(url, 'explode');
-		console.log(this.fixtureId);
+	fullFixtureDetail(event: any){
+	 console.log(event.target.id);
 	}
+
 
 
 

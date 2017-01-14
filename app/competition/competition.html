@@ -65,10 +65,10 @@
 
 					<table class="table table-condensed table-hover">
 						<tbody *ngFor="let fix of allfixtures?.fixtures">
-								<tr  style="white-space: nowrap;" class="competingteams" id="{{fix?._links.self.href | explode }}" (click) = "fullFixtureDetail(fix?._links.self.href)">
-									<td>{{fix?.homeTeamName}} <p *ngIf = "fix?.status === 'IN_PLAY'" class="goals">({{fix?.result.goalsHomeTeam}})</p></td>
+								<tr  style="white-space: nowrap;" class="competingteams" (click) = "fullFixtureDetail($event)">
+									<td id="{{fix?._links.self.href | explode }}">{{fix?.homeTeamName}} <p *ngIf = "fix?.status === 'IN_PLAY' || fix?.status === 'FINISHED'" class="goals">({{fix?.result.goalsHomeTeam}})</p></td>
 									<td>Vs</td>
-									<td>{{fix?.awayTeamName}} <br/> <p *ngIf = "fix?.status === 'IN_PLAY'" class="goals">({{fix?.result.goalsAwayTeam}})</p></td>
+									<td>{{fix?.awayTeamName}} <br/> <p *ngIf = "fix?.status === 'IN_PLAY' || fix?.status === 'FINISHED'" class="goals">({{fix?.result.goalsAwayTeam}})</p></td>
 								</tr>
 
 								<tr>
@@ -82,7 +82,7 @@
 										</span>
 
 										<span *ngIf = "fix?.status === 'FINISHED'">
-											{{fix?.date | date:'medium'}}
+											Concluded
 										</span>
 
 

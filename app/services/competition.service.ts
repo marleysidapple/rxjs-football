@@ -10,6 +10,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/publishReplay';
+import 'rxjs/add/operator/switchMap';
 
 
 @Injectable()
@@ -53,16 +54,17 @@ return this.http.get(`/books/${bookId}`).map(res => res.json())
 		// 							return this.getLeagueTable();
 		// 						});
 
-	
-		return this._http.get(this.url + '/competitions/' + id, options).map(res => res.json())
-								.flatMap((tbl) => {
-									return Observable.forkJoin([
-											 this.getUpComingFixture(id),
-											 this.getLeagueStanding(id),
-											 this.getTeamsForCompetition(id),
-										]);
-									
-								});
+		
+			return this._http.get(this.url + '/competitions/' + id, options).map(res => res.json())
+									.flatMap((tbl) => {
+										return Observable.forkJoin([
+												 this.getUpComingFixture(id),
+												 this.getLeagueStanding(id),
+												 this.getTeamsForCompetition(id),
+											]);
+										
+									});
+				
 
 
 
@@ -83,7 +85,7 @@ return this.http.get(`/books/${bookId}`).map(res => res.json())
 			.map((res: Response) => res.json()).publishLast().refCount() // ...and calling .json() on the response to return data
 			.catch((error: any) => Observable.throw(error.json().error || 'Server error')).share();
 
-		
+
 	}
 
 
